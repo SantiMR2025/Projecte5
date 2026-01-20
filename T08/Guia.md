@@ -47,9 +47,11 @@ Permitir la descarga del archivo de prueba EICAR.
    - Accede a [https://www.eicar.org](https://www.eicar.org) y descarga el archivo de prueba.
 
 **Capturas:**  
-`[Inserta captura de SmartScreen desactivado]`  
-`[Inserta captura de protección en tiempo real desactivada]`  
-`[Inserta captura del archivo EICAR descargado]`
+![img](img/01.png)
+![img](img/02.png) 
+![img](img/03.png)
+![img](img/04.png)
+![img](img/05.png)
 
 ---
 
@@ -74,7 +76,13 @@ Comprobar si el antivirus detecta el archivo EICAR en diferentes formatos.
 - 7z: Puede que no detectado
 
 **Capturas:**  
-`[Inserta captura de cada prueba con el resultado]`
+![img](img/06.png)
+![img](img/07.png)
+![img](img/08.png)
+
+![img](img/09.png)
+![img](img/10.png)
+![img](img/12.png)
 
 ---
 
@@ -97,9 +105,6 @@ Comprobar si el antivirus detecta el archivo EICAR en diferentes formatos.
   - Acceso controlado a carpetas
   - Copias de seguridad con OneDrive
 
-**Captura:**  
-`[Inserta captura de la sección de protección contra ransomware]`
-
 ---
 
 ## FASE 5: Prueba con PSRansom (simulación ransomware)
@@ -114,4 +119,114 @@ Simular un ataque y comprobar la protección contra ransomware.
 4. Permite ejecución de scripts:
    ```powershell
    Set-ExecutionPolicy -ExecutionPolicy unrestricted
-  
+5. Ejecuta cifrado:
+PowerShell.\PSRansom.ps1 -e C:\Users\%USERNAME%\Documents -s 127.0.0.1 -p 80 -xMostra més línies
+6. Comprueba archivos cifrados y archivo READ_ME.txt.
+7. Descifra:
+PowerShell.\PSRansom.ps1 -d C:\Users\%USERNAME%\Documents -k CLAVEMostra més línies
+8. Activa protección contra ransomware y repite → archivos no cifrados.
+
+Capturas:
+![img](img/23.png)
+![img](img/13.png)
+![img](img/18.png)
+![img](img/14.png)
+![img](img/15.png)
+![img](img/20.png)
+![img](img/21.png)
+![img](img/22.png)
+![img](img/26.png)
+
+---
+
+## FASE 6: WannaCry (Teoría + Prueba Controlada)
+
+### Preguntas y Respuestas
+
+- **¿Por qué se propaga tan rápido?**  
+  WannaCry explota una vulnerabilidad en el protocolo SMB (Server Message Block) y actúa como un gusano (worm), lo que significa que se propaga automáticamente por la red sin intervención humana.
+
+- **¿Qué vulnerabilidad utiliza?**  
+  EternalBlue, identificada como **CVE-2017-0144**, que permite ejecución remota de código sin autenticación. Es una vulnerabilidad crítica.
+
+- **¿Se debe pagar el rescate?**  
+  No se recomienda pagar nunca:
+  - No hay garantía de recuperar los archivos.
+  - Financia el cibercrimen.
+  Existen empresas negociadoras, pero es una práctica controvertida.
+
+- **Medidas preventivas:**  
+  - Instalar actualizaciones y parches de seguridad.
+  - Desactivar SMBv1.
+  - Mantener copias de seguridad offline.
+  - Activar protección contra ransomware (Acceso controlado a carpetas).
+  - Antivirus actualizado.
+
+- **Si ya hemos sido atacados:**  
+  - Desconectar el equipo de la red inmediatamente.
+  - No reiniciar (puede perder la clave de cifrado).
+  - Contactar con expertos en ciberseguridad.
+  - Restaurar desde copias de seguridad.
+
+---
+
+### Prueba Práctica (Solo en Entorno Controlado)
+
+**ATENCIÓN:**  
+- Realizar únicamente en una máquina virtual sin conexión a Internet.  
+- Tener una instantánea creada antes de ejecutar el malware.  
+- No usar en equipos físicos ni en entornos de producción.
+
+#### Pasos:
+
+1. **Crear snapshot:**  
+   Nombre: `Abans del virus`.
+
+2. **Preparar archivos en la carpeta Documentos:**  
+   - Archivos `.txt`, `.docx`, `.jpg`, `.pdf`.
+   - Un archivo `.zip` con los anteriores.
+   - Un `.zip` protegido con contraseña (ejemplo: `infected`).
+
+3. **Descargar WannaCry:**  
+   Desde el repositorio:  
+   [https://github.com/ytisf/theZoo](https://github.com/ytisf/theZoo)  
+   Contraseña para descomprimir: `infected`.
+
+4. **Desactivar protecciones:**  
+   - Protección en tiempo real de Windows Defender.
+   - Protección contra ransomware.
+
+5. **Descomprimir y ejecutar el malware:**  
+   Ejecuta el archivo `.exe` de WannaCry.  
+   **Resultado esperado:**  
+   - Aparece la pantalla de rescate solicitando pago en Bitcoin.
+   - Archivos en Documentos quedan cifrados.
+
+6. **Comprobar detección del antivirus:**  
+   - Si estaba activo, verifica si detectó el malware.
+   - Si no, haz clic derecho sobre el `.exe` → **Analizar con Windows Defender**.
+
+7. **Escanear con VirusTotal:**  
+   [https://www.virustotal.com](https://www.virustotal.com)  
+   Sube el archivo `.exe` (NO el `.zip` con contraseña).  
+   Observa qué antivirus lo detectan y cuáles no.
+
+8. **Restaurar la máquina:**  
+   Apaga la máquina virtual y vuelve a la instantánea `Abans del virus`.
+
+---
+
+### Capturas:
+![img](img/27.png)
+![img](img/28.png)
+![img](img/29.png)
+![img](img/34.png)
+![img](img/35.png)
+
+![img](img/31.png)
+![img](img/32.png)
+![img](img/33.png)
+![img](img/36.png)
+![img](img/37.png)
+![img](img/38.png)
+
