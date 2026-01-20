@@ -29,7 +29,6 @@ Crear una màquina virtual amb els recursos i configuracions indicades.
 
 ### Passos
 1. **Obrir VirtualBox**.
-   - *[Captura: Pantalla principal de VirtualBox]*
 
 2. **Crear nova màquina virtual**:
    - Nom: `WindowsServer2025-Test`
@@ -82,17 +81,21 @@ Instal·lar Windows Server 2025 en mode GUI amb idioma anglès i configuració r
    - *[Captura: Pantalla de selecció d’edició]*
 
 5. **Configurar contrasenya d’Administrator**.
-   - *[Captura: Pantalla de configuració de contrasenya]* ![11](img/11.png)
+   - ![img](img/11.png)
 
 6. **Canviar nom de l’equip**:
    - Nom: `DCxx`.
    - Reinicia.
-   - *[Captura: Pantalla de canvi de nom]*
+   - *![img](img/12.png)*
+   - ![img](img/13.png)
+   - ![img](img/14.png)
 
 7. **Actualitzar i pausar actualitzacions**:
    - Instal·la actualitzacions.
    - Pausa-les el màxim temps possible.
-   - *[Captura: Pantalla de Windows Update]*
+   - ![img](img/15.png)
+   - ![img](img/16.png)
+   - ![img](img/17.png)
 
 **Observació:** El mode GUI facilita la gestió visual del servidor.
 
