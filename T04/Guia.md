@@ -82,7 +82,7 @@ Instal·lar Windows Server 2025 en mode GUI amb idioma anglès i configuració r
    - *[Captura: Pantalla de selecció d’edició]*
 
 5. **Configurar contrasenya d’Administrator**.
-   - *[Captura: Pantalla de configuració de contrasenya]*
+   - *[Captura: Pantalla de configuració de contrasenya]* ![11](img/11.png)
 
 6. **Canviar nom de l’equip**:
    - Nom: `DCxx`.
