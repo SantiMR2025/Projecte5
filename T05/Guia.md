@@ -65,12 +65,21 @@ Quan completes la promoció, Windows et permet generar l’script PowerShell equ
 
 **Exemple d’script PowerShell:**
 ```powershell
+#
+# Windows PowerShell script for AD DS Deployment
+#
+
+Import-Module ADDSDeployment
 Install-ADDSForest `
--DomainName "translogicXX.test" `
--DomainNetbiosName "TRANSLOGICXX" `
+-CreateDnsDelegation:$false `
+-DatabasePath "C:\WINDOWS\NTDS" `
+-DomainMode "Win2025" `
+-DomainName "translogic17.test" `
+-DomainNetbiosName "TRANSLOGIC17" `
 -ForestMode "Win2025" `
--InstallDNS `
--CreateDNSDelegation:$false `
--SafeModeAdministratorPassword (ConvertTo-SecureString "ContrasenyaDSRM" -AsPlainText -Force) `
+-InstallDns:$true `
+-LogPath "C:\WINDOWS\NTDS" `
+-NoRebootOnCompletion:$false `
+-SysvolPath "C:\WINDOWS\SYSVOL" `
 -Force:$true
 ``
