@@ -25,6 +25,8 @@ Configurar dos entornos diferenciados:
 
 ## **Actividad A: Servidor FTP (vsftpd)**
 
+![img](img/0001.png)
+
 ### **1. Actualizar el sistema**
 
 ```bash
@@ -37,11 +39,13 @@ sudo apt update && sudo apt upgrade -y
 sudo apt install vsftpd -y
 ```
 
+
 ### **3. Verificar estado del servicio**
 
 ```bash
 sudo systemctl status vsftpd
 ```
+![img](img/0021.png)
 
 Si no está activo:
 
@@ -55,41 +59,73 @@ sudo systemctl enable vsftpd
 Archivo: `/etc/vsftpd.conf`
 
 ```bash
-sudo cp /etc/vsftpd.conf /etc/vsftpd.conf.bak
 sudo nano /etc/vsftpd.conf
 ```
 
 Modificar:
 
+    listen=YES
+    listen_ipv6=NO
+    anonymous_enable=NO
     local_enable=YES
     write_enable=YES
+    local_umask=022
+    
     chroot_local_user=YES
+    allow_writeable_chroot=YES
+    
+    pasv_enable=YES
+    pasv_min_port=40000
+    pasv_max_port=40010
+    pasv_address=192.168.56.101
+    
+    user_sub_token=$USER
+    local_root=/home/$USER/ftp
+
+![img](img/0017.png)
+![img](img/0018.png)
+![img](img/0019.png)
 
 Guardar y reiniciar:
 
 ```bash
 sudo systemctl restart vsftpd
 ```
+![img](img/0010.png)
 
-### **5. Crear usuario FTP**
+### **5. Abrir puertos**
 
 ```bash
 sudo adduser ftp_tunombre
 ```
+![img](img/0015.png)
 
-### **6. Probar conexión FTP**
+### **6. Crear usuario FTP**
 
 ```bash
-ftp localhost
+sudo adduser ftp_tunombre
 ```
+![img](img/0015.png)
 
-### **7. Comprobar tráfico en claro**
+### **7. Crear y Dar permisos a los directorios**
+
+```bash
+sudo mkdir -p /home/ftpuser/ftp
+sudo chown root:root /home/ftpuser
+sudo chmod 755 /home/ftpuser
+sudo chown ftpuser:ftpuser /home/ftpuser/ftp
+```
+![img](img/0016.png)
+
+
+### **8. Comprobar tráfico en claro**
 
 *   Conectar desde Windows (por ejemplo, con FileZilla).
 *   Capturar con Wireshark → Filtrar por `ftp`.
 *   Evidencia: credenciales visibles en texto plano.
-
-***
+![img](img/0015.png)
+![img](img/0015.png)
+  ***
 
 ## **Actividad B: Servidor SFTP (sobre SSH)**
 
