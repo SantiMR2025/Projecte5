@@ -34,23 +34,21 @@ Crear una màquina virtual amb els recursos i configuracions indicades.
    - Nom: `WindowsServer2025-Test`
    - Tipus: Microsoft Windows
    - Versió: Windows 2022 (64-bit)
-   - *[Captura: Pantalla de creació de VM]*
+   - ![img](img/01.png)
 
 3. **Assignar memòria RAM**: 8192 MB.
-   - *[Captura: Configuració de memòria]*
-
 4. **Configurar CPU**: 2 processadors.
-   - *[Captura: Configuració de CPU]*
+   - ![img](img/02.png)
 
 5. **Afegir discos**:
    - Disc 1: 32 GB (VDI).
    - Disc 2: 10 GB (VDI).
-   - *[Captura: Configuració d’emmagatzematge]*
+   - ![img](img/03.png)
 
 6. **Configurar xarxes**:
    - Adaptador 1: NAT.
    - Adaptador 2: Host-only.
-   - *[Captura: Configuració de xarxes]*
+   - ![img](img/04.png)
 
 **Observació:** Configuració coherent amb requisits recomanats per Microsoft.
 
@@ -63,16 +61,15 @@ Instal·lar Windows Server 2025 en mode GUI amb idioma anglès i configuració r
 
 ### Passos
 1. **Inserir la ISO**:
-   - *[Captura: ISO carregada a VirtualBox]*
+   - ![img](img/01.png)
 
 2. **Iniciar la màquina virtual**.
-   - *[Captura: Pantalla inicial d’instal·lació]*
 
 3. **Seleccionar idioma i configuració regional**:
    - Language: English (US)
    - Time and currency: Spanish (Spain)
    - Keyboard: Spanish
-   - *[Captura: Pantalla de selecció d’idioma]*
+   - ![img](img/02.png)
 
 4. **Instal·lar Windows Server 2025**:
    - Tria Windows Server 2025 Standard (Desktop Experience).
@@ -86,7 +83,7 @@ Instal·lar Windows Server 2025 en mode GUI amb idioma anglès i configuració r
 6. **Canviar nom de l’equip**:
    - Nom: `DCxx`.
    - Reinicia.
-   - *![img](img/12.png)*
+   - ![img](img/12.png)
    - ![img](img/13.png)
    - ![img](img/14.png)
 
