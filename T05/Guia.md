@@ -37,7 +37,11 @@ Com a continuació de la tasca anterior, desplegarem **Active Directory Domain S
 4. Completa l’assistent i reinicia si ho demana.
 
 **Captura requerida:**  
-![Captura del rol AD DS instal·lat](ruta/captura1.png)
+![img](img/0003.png)
+![img](img/0004.png)
+![img](img/0005.png)
+![img](img/0006.png)
+![img](img/0007.png)
 
 ---
 
@@ -54,7 +58,12 @@ Com a continuació de la tasca anterior, desplegarem **Active Directory Domain S
 7. Fes clic a **Install** i espera el reinici.
 
 **Captura requerida:**  
-![Pantalla resum abans de la instal·lació](ruta/captura2.png)
+![img](img/0008.png)
+![img](img/0009.png)
+![img](img/0010.png)
+![img](img/0011.png)
+![img](img/001.png)
+![img](img/0013.png)
 
 ---
 
