@@ -10,13 +10,14 @@ Configurar dos entornos diferenciados:
 
 *   **Servidor FTP** (transferencia sin cifrado).
 *   **Servidor SFTP** (transferencia segura sobre SSH).
-    Comprobar el tráfico con **Wireshark** desde un cliente Windows.
+    Comprobacion del tráfico con **Wireshark** desde un cliente Windows.
 
 ***
 
 ## **Requisitos previos**
 
 *   Sistema operativo: **Ubuntu** (servidor).
+*   Xarxa nat
 *   Acceso con privilegios `sudo`.
 *   Cliente Windows con **Wireshark** instalado.
 *   Conexión de red entre ambos sistemas.
@@ -96,9 +97,12 @@ sudo systemctl restart vsftpd
 ### **5. Abrir puertos**
 
 ```bash
-sudo adduser ftp_tunombre
+sudo ufw allow 21/tcp
+sudo ufw allow 40000:40010/tcp
+sudo systemctl restart vsftpd
 ```
 ![img](img/0015.png)
+![img](img/0021.png)
 
 ### **6. Crear usuario FTP**
 
@@ -123,8 +127,11 @@ sudo chown ftpuser:ftpuser /home/ftpuser/ftp
 *   Conectar desde Windows (por ejemplo, con FileZilla).
 *   Capturar con Wireshark → Filtrar por `ftp`.
 *   Evidencia: credenciales visibles en texto plano.
-![img](img/0015.png)
-![img](img/0015.png)
+![img](img/0002.png)
+![img](img/0003.png)
+![img](img/0004.png)
+![img](img/0005.png)
+![img](img/0006.png)
   ***
 
 ## **Actividad B: Servidor SFTP (sobre SSH)**
@@ -135,12 +142,14 @@ sudo chown ftpuser:ftpuser /home/ftpuser/ftp
 sudo apt install openssh-server -y
 sudo systemctl status ssh
 ```
+![img](img/0006.png)
 
 ### **2. Crear usuario SFTP**
 
 ```bash
 sudo adduser sftp_tunombre
 ```
+![img](img/0007.png)
 
 ### **3. Crear directorio para chroot**
 
@@ -150,6 +159,7 @@ sudo chown root:root /sftp/tunombre
 sudo chmod 755 /sftp/tunombre
 sudo chown sftp_tunombre:sftp_tunombre /sftp/tunombre/upload
 ```
+![img](img/0008.png)
 
 ### **4. Configurar SSH para SFTP**
 
@@ -167,11 +177,14 @@ Añadir al final:
         AllowTcpForwarding no
         X11Forwarding no
 
+![img](img/0009.png)
+
 Reiniciar:
 
 ```bash
 sudo systemctl restart ssh
 ```
+![img](img/0010.png)
 
 ### **5. Probar conexión SFTP**
 
@@ -184,12 +197,16 @@ Subir archivo:
 ```bash
 put archivo.txt
 ```
+![img](img/0011.png)
 
 ### **6. Comprobar tráfico cifrado**
 
 *   Conectar desde Windows (WinSCP o FileZilla en modo SFTP).
 *   Capturar con Wireshark → Filtrar por `ssh`.
 *   Evidencia: tráfico cifrado (no se ven credenciales).
+
+![img](img/0013.png)
+![img](img/0014.png)
 
 ***
 
@@ -201,24 +218,3 @@ put archivo.txt
 | Puerto         | 21   | 22   |
 | Seguridad      | Baja | Alta |
 
-***
-
-## **Evidencias requeridas**
-
-*   Capturas de:
-    *   Usuarios creados (`ftp_tunombre`, `sftp_tunombre`).
-    *   Configuración de archivos (`vsftpd.conf`, `sshd_config`).
-    *   Conexión FTP y SFTP.
-    *   Wireshark mostrando tráfico FTP en claro y SFTP cifrado.
-*   Comentarios sobre errores encontrados y cómo se resolvieron.
-
-***
-
-### **Notas personales**
-
-Añade aquí tus anotaciones, iniciales y observaciones para demostrar que lo has realizado.
-
-***
-
-¿Quieres que también te prepare **un apartado final con comandos para verificar y solucionar errores comunes** (por ejemplo, problemas con permisos, firewall, conexión)?  
-¿O prefieres que incluya **instrucciones para capturar tráfico con Wireshark paso a paso** dentro de la guía?
