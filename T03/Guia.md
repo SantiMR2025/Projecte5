@@ -1,7 +1,3 @@
-Aquí tienes la **guía completa en formato Markdown**, lista para entregar o publicar en GitHub. Incluye las dos actividades (FTP y SFTP), explicaciones, comandos y espacio para evidencias.
-
-***
-
 # **Guía Práctica: Configuración de Servidores FTP y SFTP en Ubuntu**
 
 ## **Objetivo**
