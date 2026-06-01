@@ -1,4 +1,4 @@
-<img width="1214" height="1706" alt="image" src="https://github.com/user-attachments/assets/34f71112-42fc-4fdf-8d58-360d8df00c02" /><div align="center">
+
   <div style="border: 3px solid #4A90E2; border-radius: 12px; padding: 10px; display: inline-block;">
     <a href="https://drive.google.com/file/d/1_ht9dFA0IuP4WlTjnCSTS60LhTv0_Jy6/view?usp=sharing" target="_blank">
       <img src="https://drive.google.com/file/d/1jQMWbvm92hUEjrZ12269nRczYgRtoRxm/view?usp=sharing"
